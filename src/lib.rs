@@ -35,6 +35,8 @@ extern crate librocksdb_sys;
 extern crate bincode;
 #[cfg(feature="rocksdb-datastore")]
 extern crate byteorder;
+#[cfg(feature="sqlite-datastore")]
+extern crate rusqlite;
 
 #[macro_use]
 pub mod tests;
@@ -56,3 +58,8 @@ pub use pg::{PostgresDatastore, PostgresTransaction};
 mod rdb;
 #[cfg(feature="rocksdb-datastore")]
 pub use rdb::{RocksdbDatastore, RocksdbTransaction};
+
+#[cfg(feature="sqlite-datastore")]
+mod sqlite;
+#[cfg(feature="sqlite-datastore")]
+pub use sqlite::{SQLiteDatastore, SQLiteTransaction};
